@@ -9,7 +9,8 @@ class Student:
         self.lecturer_grades = {}  # Новый атрибут для оценок лекторам
 
     def rate_lector(self, lecture, course, grade):
-        if (isinstance(lecture, Lecturer) and course in self.courses_in_progress 
+        if (isinstance(lecture, Lecturer) 
+            and course in self.courses_in_progress 
             and course in lecture.courses_attached):
             lecture.grades.setdefault(course, []).append(grade)
         else:
@@ -22,8 +23,6 @@ class Mentor:
         self.courses_attached = []  # Наставник должен быть прикреплен к курсу
 
 
-
-
 class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
@@ -33,9 +32,9 @@ class Lecturer(Mentor):
 
 class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
-        if (isinstance(student, Student) and 
-            course in self.courses_attached and 
-            course in student.courses_in_progress):
+        if (isinstance(student, Student) 
+            and course in self.courses_attached 
+            and course in student.courses_in_progress):
             student.grades.setdefault(course, []).append(grade)
         else:
             return 'Ошибка'

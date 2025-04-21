@@ -39,7 +39,11 @@ class Student:
 
 
     def __str__(self):
-        return f"Имя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за домашнее задание: {self.sr_znach()} \nЗавершенные курсы: {self.get_finished_course()} \nКурсы в процессе изучения: {self.get_courses_in_progress()}"
+        return (f"Имя: {self.name}\n"
+                f"Фамилия: {self.surname}\n"
+                f"Средняя оценка за домашнее задание: {self.sr_znach():.1f}\n"
+                f"Завершенные курсы: {self.get_finished_course()}\n"
+                f"Курсы в процессе изучения: {self.get_courses_in_progress()}\n")
 
 class Mentor:
     def __init__(self, name, surname):
@@ -66,14 +70,16 @@ class Lecturer(Mentor):
         return (sum(all_grade) / len(all_grade))
 
     def __str__(self):
-        return f"Имя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за лекции: {self.sr_znach()}"
+        return (f"Имя: {self.name}\n"
+                f"Фамилия: {self.surname}\n"
+                f"Средняя оценка за лекции: {self.sr_znach():.1f}\n")
 
 
 class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
-        if (isinstance(student, Student) and 
-            course in self.courses_attached and 
-            course in student.courses_in_progress):
+        if (isinstance(student, Student) 
+            and course in self.courses_attached 
+            and course in student.courses_in_progress):
             student.grades.setdefault(course, []).append(grade)
         else:
             return 'Ошибка'
