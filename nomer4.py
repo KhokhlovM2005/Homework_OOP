@@ -35,6 +35,32 @@ class Student:
             return "Нет текущих курсов"
         return ", ".join(self.courses_in_progress)
     
+    # Проверка на равенство (==)
+    def __eq__(self, other):
+        return self.sr_znach() == other.sr_znach()
+        
+    # Проверка на неравенство (!=)    
+    def __ne__(self, other):
+        return not (self.sr_znach() == other.sr_znach())
+            
+        
+    # Меньше (<)
+    def __lt__(self, other):
+        return self.sr_znach() < other.sr_znach()
+        
+    # Меньше или равно (<=)
+    def __le__(self, other):
+        return self.sr_znach() < other.sr_znach() or self.sr_znach() == other.sr_znach()
+
+
+    # Больше (>)
+    def __gt__(self, other):
+        return self.sr_znach() > other.sr_znach()
+    
+    # Больше или равно (>=)
+    def __ge__(self, other):
+        return self.sr_znach() > other.sr_znach() or self.sr_znach() == other.sr_znach()
+    
 
 
 
@@ -73,6 +99,32 @@ class Lecturer(Mentor):
         return (f"Имя: {self.name}\n"
                 f"Фамилия: {self.surname}\n"
                 f"Средняя оценка за лекции: {self.sr_znach():.1f}\n")
+    
+    # Проверка на равенство (==)
+    def __eq__(self, other):
+        return self.sr_znach() == other.sr_znach()
+        
+    # Проверка на неравенство (!=)    
+    def __ne__(self, other):
+        return not (self.sr_znach() == other.sr_znach())
+            
+        
+    # Меньше (<)
+    def __lt__(self, other):
+        return self.sr_znach() < other.sr_znach()
+        
+    # Меньше или равно (<=)
+    def __le__(self, other):
+        return self.sr_znach() < other.sr_znach() or self.sr_znach() == other.sr_znach()
+
+
+    # Больше (>)
+    def __gt__(self, other):
+        return self.sr_znach() > other.sr_znach()
+    
+    # Больше или равно (>=)
+    def __ge__(self, other):
+        return self.sr_znach() > other.sr_znach() or self.sr_znach() == other.sr_znach()
 
 
 class Reviewer(Mentor):

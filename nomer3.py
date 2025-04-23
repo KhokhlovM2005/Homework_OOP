@@ -43,6 +43,36 @@ class Student:
                 f"Средняя оценка за домашнее задание: {self.sr_znach():.1f}\n"
                 f"Завершенные курсы: {self.get_finished_course()}\n"
                 f"Курсы в процессе изучения: {self.get_courses_in_progress()}\n")
+    
+    # Проверка на равенство (==)
+    def __eq__(self, other):
+        return self.sr_znach() == other.sr_znach()
+        
+    # Проверка на неравенство (!=)    
+    def __ne__(self, other):
+        return not (self.sr_znach() == other.sr_znach())
+            
+        
+    # Меньше (<)
+    def __lt__(self, other):
+        return self.sr_znach() < other.sr_znach()
+        
+    # Меньше или равно (<=)
+    def __le__(self, other):
+        return self.sr_znach() < other.sr_znach() or self.sr_znach() == other.sr_znach()
+
+
+    # Больше (>)
+    def __gt__(self, other):
+        return self.sr_znach() > other.sr_znach()
+    
+    # Больше или равно (>=)
+    def __ge__(self, other):
+        return self.sr_znach() > other.sr_znach() or self.sr_znach() == other.sr_znach()
+    
+
+        
+
 
 class Mentor:
     def __init__(self, name, surname):
@@ -72,6 +102,31 @@ class Lecturer(Mentor):
         return (f"Имя: {self.name}\n"
                 f"Фамилия: {self.surname}\n"
                 f"Средняя оценка за лекции: {self.sr_znach():.1f}\n")
+    # Проверка на равенство (==)
+    def __eq__(self, other):
+        return self.sr_znach() == other.sr_znach()
+        
+    # Проверка на неравенство (!=)    
+    def __ne__(self, other):
+        return not (self.sr_znach() == other.sr_znach())
+            
+        
+    # Меньше (<)
+    def __lt__(self, other):
+        return self.sr_znach() < other.sr_znach()
+        
+    # Меньше или равно (<=)
+    def __le__(self, other):
+        return self.sr_znach() < other.sr_znach() or self.sr_znach() == other.sr_znach()
+
+
+    # Больше (>)
+    def __gt__(self, other):
+        return self.sr_znach() > other.sr_znach()
+    
+    # Больше или равно (>=)
+    def __ge__(self, other):
+        return self.sr_znach() > other.sr_znach() or self.sr_znach() == other.sr_znach()
 
 
 class Reviewer(Mentor):
@@ -115,5 +170,42 @@ print(best_student)
 print(cool_reviewer)
 
 print(awesome_lecturer)
+
+
+
+# Студенты с разными баллами
+student1 = Student("Anna", "Brown", "Female")
+student1.grades = {"Python": [8, 9, 7], "Java": [9, 9]}
+
+student2 = Student("John", "Doe", "Male")
+student2.grades = {"Python": [6, 7, 5], "Java": [8, 7]}
+
+# Тестируем операции
+print(student1 > student2)   # True (8.4 > 6.6)
+print(student1 <= student2)  # False
+print(student1 == student2)  # False
+print(student1 != student2)  # True
+
+# Лекторы с одинаковым баллом
+lecturer1 = Lecturer("Alice", "Smith")
+lecturer1.grades = {"Python": [9, 9, 9]}
+
+lecturer2 = Lecturer("Bob", "Johnson")
+lecturer2.grades = {"Java": [8, 10, 9]}
+
+print(lecturer1 == lecturer2)  # True (9.0 == 9.0)
+print(lecturer1 >= lecturer2)  # True
+print(lecturer1 < lecturer2)   # False
+
+student3 = Student("Emma", "Watson", "Female")
+student3.grades = {"Python": [10, 10]}
+
+student4 = Student("Tom", "Hanks", "Male")
+student4.grades = {"Java": [10, 10]}
+
+print(student3 == student4)  # True (10.0 == 10.0)
+print(student3 != student4)  # False
+print(student3 >= student4)  # True
+
 
 
